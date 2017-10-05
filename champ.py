@@ -74,7 +74,7 @@ for (team_i, team_j) in result_match_dict:
 # Вначале сортировка по количеству забитых мячей
 sorted_list = sorted(all_stat_dict.items(), key = lambda x: x[1]["Goals"], reverse = True)
 
-# Затем повторная сортировка по по разнице забитых и пропущенных мячей
+# Затем повторная сортировка по разнице забитых и пропущенных мячей
 sorted_list = sorted(sorted_list, key = lambda x: x[1]["Goals"] - x[1]["Misses"], reverse = True)
 
 # В последнюю очередь сортировка по количеству очков
