@@ -1,10 +1,10 @@
 import random
 
 # Список команд
-teams_list = ["Лестер Сити", "Арсенал", "Тоттенхэм Хотспур", "Манчестер Сити", "Манчестер Юнайтед", "Саутгемптон",
-              "Вест Хэм Юнайтед", "Ливерпуль", "Сток Сити", "Челси", "Эвертон", "Суонси Сити", "Уотфорд",
-              "Вест Бромвич Альбион", "Кристал Пэлас", "Борнмут", "Сандерленд", "Ньюкасл Юнайтед", "Норвич Сити",
-              "Астон Вилла"]
+teams_list = ["AFC Bournemouth", "Arsenal", "Aston Villa", "Chelsea", "Crystal Palace", "Everton",
+              "Leicester City", "Liverpool", "Manchester City", "Manchester United", "Newcastle United",
+              "Norwich City", "Southampton", "Stoke City", "Sunderland", "Swansea City",
+              "Tottenham Hotspur", "Watford", "West Bromwich Albion", "West Ham United"]
 
 # Структура, хранящая всю статистику по командам - словарь all_stat_dict
 # В качестве ключа - название команды
@@ -111,5 +111,4 @@ for i in range(0, len(sorted_list)):
 print("\n")
 
 # Вывод результата матча
-print_match_result("Кристал Пэлас","Борнмут")
-
+print_match_result("Crystal Palace", "Manchester City")
