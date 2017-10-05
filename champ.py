@@ -85,16 +85,19 @@ sorted_list = sorted(sorted_list, key = lambda x: x[1]["Scores"], reverse = True
 sorted_list[0][1]["Place"] = 1
 
 for i in range(1, len(sorted_list)):
-    if sorted_list[i][1]["Scores"] == sorted_list[i - 1][1]["Scores"]:
+    if sorted_list[i][1]["Scores"] < sorted_list[i - 1][1]["Scores"]:
+        sorted_list[i][1]["Place"] = sorted_list[i - 1][1]["Place"] + 1   
+        
+    elif sorted_list[i][1]["Scores"] == sorted_list[i - 1][1]["Scores"]:
         if ((sorted_list[i][1]["Goals"] - sorted_list[i][1]["Misses"]) < (sorted_list[i-1][1]["Goals"] - sorted_list[i-1][1]["Misses"])):      
             sorted_list[i][1]["Place"] = sorted_list[i - 1][1]["Place"] + 1
+            
         elif ((sorted_list[i][1]["Goals"] - sorted_list[i][1]["Misses"]) == (sorted_list[i-1][1]["Goals"] - sorted_list[i-1][1]["Misses"])):
             if ((sorted_list[i][1]["Goals"]) < (sorted_list[i-1][1]["Goals"])):
                 sorted_list[i][1]["Place"] = sorted_list[i - 1][1]["Place"] + 1
+                
             elif ((sorted_list[i][1]["Goals"]) == (sorted_list[i-1][1]["Goals"])):
                 sorted_list[i][1]["Place"] = sorted_list[i - 1][1]["Place"]          
-    else:
-        sorted_list[i][1]["Place"] = sorted_list[i - 1][1]["Place"] + 1
 
 # Вывод итоговой таблицы чемпионата
 print("{:^10} | {:^20} | {:^10} | {:^10} | {:^10} | {:^10} | {:^10} | {:^10}".format
