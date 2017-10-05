@@ -1,50 +1,50 @@
 import random
 
-# список команд
+# Список команд
 teams_list = ["Лестер Сити", "Арсенал", "Тоттенхэм Хотспур", "Манчестер Сити", "Манчестер Юнайтед", "Саутгемптон",
               "Вест Хэм Юнайтед", "Ливерпуль", "Сток Сити", "Челси", "Эвертон", "Суонси Сити", "Уотфорд",
               "Вест Бромвич Альбион", "Кристал Пэлас", "Борнмут", "Сандерленд", "Ньюкасл Юнайтед", "Норвич Сити",
               "Астон Вилла"]
 
-# структура, хранящая всю статистику по командам - словарь all_stat_dict
-# в качестве ключа - название команды
+# Структура, хранящая всю статистику по командам - словарь all_stat_dict
+# В качестве ключа - название команды
 all_stat_dict = {}
 
 for team in teams_list:
     all_stat_dict[team] = {"Wins":0, "Loses":0, "Draws":0, "Goals":0, "Misses":0, "Scores":0, "Place":0}
 
-# структура, хранящая результаты матчей - словарь result_match_dict
-# в качестве ключа - кортеж (team1, team2)
+# Структура, хранящая результаты матчей - словарь result_match_dict
+# В качестве ключа - кортеж (team1, team2)
 result_match_dict = {}
 
-# заполнение словаря result_match_dict, хранящего результаты матчей, случайно сгенерированными числами
+# Заполнение словаря result_match_dict, хранящего результаты матчей, случайно сгенерированными числами
 for team_i in teams_list:
     for team_j in teams_list:
         if (team_i == team_j):
                continue    
         result_match_dict[(team_i, team_j)] = (random.randint(0, 3), random.randint(0, 3))
 
-# функция вывода результата отдельного матча
+# Функция вывода результата отдельного матча
 def print_match_result(team_x, team_y):
         print("{:^20} - {:^20} {:>}:{:>}".format(team_x, team_y,
         result_match_dict[(team_x, team_y)][0], result_match_dict[(team_x, team_y)][1]))
     
-# вывод результатов всех матчей
+# Вывод результатов всех матчей
 for (team_i, team_j) in result_match_dict:
         print_match_result(team_i, team_j)
         
 print("\n")
 
-# теперь, основываясь на данных в result_match_dict, нужно заполнить all_stat_dict
+# Теперь, основываясь на данных в result_match_dict, нужно заполнить all_stat_dict
 for (team_i, team_j) in result_match_dict:
-    # занесение забитых и пропущенных мячей
+    # Занесение забитых и пропущенных мячей
     all_stat_dict[team_i]["Goals"] += result_match_dict[(team_i, team_j)][0]
     all_stat_dict[team_i]["Misses"] += result_match_dict[(team_i, team_j)][1]
     
     all_stat_dict[team_j]["Goals"] += result_match_dict[(team_i, team_j)][1]
     all_stat_dict[team_j]["Misses"] += result_match_dict[(team_i, team_j)][0]   
     
-    # занесение побед, поражений, ничьих и очков
+    # Занесение побед, поражений, ничьих и очков
     if result_match_dict[(team_i, team_j)][0] > result_match_dict[(team_i, team_j)][1]:
         all_stat_dict[team_i]["Wins"] += 1
         all_stat_dict[team_i]["Scores"] += 3
@@ -82,7 +82,6 @@ sorted_list = sorted(sorted_list, key = lambda x: x[1]["Scores"], reverse = True
 
 
 # После сортировки необходимо присвоить командам соответствующие места в турнирной таблице
-
 sorted_list[0][1]["Place"] = 1
 
 for i in range(1, len(sorted_list)):
